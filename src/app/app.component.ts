@@ -12,6 +12,8 @@ export class AppComponent implements OnInit{
 
   ngForm: FormGroup;
 
+  display: boolean = false;
+
   constructor(private fb: FormBuilder) {
 
   }
@@ -20,7 +22,12 @@ export class AppComponent implements OnInit{
     this.ngForm = this.fb.group({
       start: ['', [Validators.required, Validators.minLength(4)]],
       end: ['', [Validators.required, Validators.minLength(4)]],
-      city: ['', []]
+      city: ['', []],
+      address: ['', [Validators.required, Validators.minLength(4)]],
     });
+  }
+
+  showDialog() {
+    this.display = true;
   }
 }
