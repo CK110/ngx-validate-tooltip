@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+/* CSS 表单验证钩子 */
+input.ng-invalid {
+  border-color: #ffa8a8 !important;
+}
+
+/* input  */
+input.ng-invalid:focus {
+  box-shadow: 0px 0px 5px #d09595 !important;
+}
+
+/* calendar */
+p-calendar.ng-invalid .ui-inputtext {
+  border-color: #ffa8a8 !important;
+}
+p-calendar.ng-invalid .ui-inputtext:focus {
+  box-shadow: 0px 0px 5px #d09595 !important;
+}
+
+/* autocomplete */
+p-autocomplete.ng-invalid .ui-inputtext {
+  border-color: #ffa8a8 !important;
+}
+p-autocomplete.ng-invalid .ui-inputtext:focus {
+  box-shadow: 0px 0px 5px #d09595 !important;
+}
+
+/* chips */
+p-chips.ng-invalid .ui-inputtext {
+  border-color: #ffa8a8 !important;
+}
+p-chips.ng-invalid .ui-inputtext:focus {
+  box-shadow: 0px 0px 5px #d09595 !important;
+}
+
