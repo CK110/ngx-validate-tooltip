@@ -98,6 +98,8 @@ export class ValidateTooltipComponent implements OnDestroy {
       case 'right':
         left = targetLeft + this.domHandler.getOuterWidth(this.in.nativeElement);
         top = targetTop + (this.domHandler.getOuterHeight(this.in.nativeElement) - this.domHandler.getOuterHeight(this.container)) / 2;
+        console.log(left);
+        console.log(top);
         break;
 
       case 'left':
@@ -119,8 +121,7 @@ export class ValidateTooltipComponent implements OnDestroy {
     this.container.style.left = left + 'px';
     this.container.style.top = top + 'px';
 
-    this.container.style.zIndex = ++DomHandler.zindex;
-
+    this.container.style.zIndex = 999999; // different from PrimeNg
 
   }
 
@@ -145,13 +146,14 @@ export class ValidateTooltipComponent implements OnDestroy {
     }
 
     this.container.appendChild(tooltipText);
-    this.domHandler.appendChild(this.container, this.el.nativeElement);
+
+    document.body.appendChild(this.container);
 
   }
 
   ngOnDestroy() {
     if (this.container && this.container.parentElement) {
-        this.el.nativeElement.removeChild(this.container);
+      document.body.removeChild(this.container);
     }
     this.container = null;
   }
