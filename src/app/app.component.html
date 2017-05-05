@@ -5,22 +5,6 @@
 <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>
 
 
-<!--<p-dialog [(visible)]="display" width="600" height="400" [contentStyle]="{height: '400px' }">-->
-  <!--<form [formGroup]="ngForm" >-->
-    <!--<app-validate-tooltip [control]="ngForm.get('start')">-->
-      <!--<input pInputText formControlName="start">-->
-    <!--</app-validate-tooltip>-->
-
-    <!--<app-validate-tooltip [control]="ngForm.get('end')">-->
-      <!--<input pInputText formControlName="end">-->
-    <!--</app-validate-tooltip>-->
-
-    <!--<app-validate-tooltip [control]="ngForm.get('city')">-->
-      <!--<input pInputText formControlName="city">-->
-    <!--</app-validate-tooltip>-->
-  <!--</form>-->
-<!--</p-dialog>-->
-
 <form [formGroup]="ngForm" >
   <app-validate-tooltip [control]="ngForm.get('start')">
     <input pInputText formControlName="start">

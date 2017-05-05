@@ -27,8 +27,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ButtonModule,
   ],
   providers: [
-    // ValidateMsgService
-    { provide: ValidateMsgService, useClass: CustomValidateMsgService }
+    ValidateMsgService
+    // { provide: ValidateMsgService, useClass: CustomValidateMsgService }
   ],
   bootstrap: [AppComponent]
 })

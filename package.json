@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib": "nglb --rootDir src/app/components --outDir lib-dist"
+    "build:lib": "nglb --rootDir src/app/components --outDir lib-dist",
+    "github-pages:push": "ng build --output-path gh-pages"
   },
   "private": true,
   "dependencies": {

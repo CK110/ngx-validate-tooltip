@@ -1,28 +1,89 @@
 # NgValidateTooltip
+a validate tooltip built with Angular4 inspired by [PrimeNG](https://github.com/primefaces/primeng/blob/master/components/tooltip/tooltip.ts)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+## Installation
 
-## Development server
+npm i ngx-validate-tooltip --save
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+### Import In AppModule
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+```typescript
+....
++ import {ValidateMsgService, ValidateTooltipModule} from 'ngx-validate-tooltip';
 
-## Build
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
++    ValidateTooltipModule,
+  ],
+  providers: [
++    ValidateMsgService
+    // { provide: ValidateMsgService, useClass: CustomValidateMsgService }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```
 
-## Running unit tests
+### Use In Templete
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+// app.component.html
+<form [formGroup]="ngForm" >
+  <app-validate-tooltip [control]="ngForm.get('start')">
+    <input pInputText formControlName="start">
+  </app-validate-tooltip>
 
-## Running end-to-end tests
+  <app-validate-tooltip [control]="ngForm.get('end')">
+    <input pInputText formControlName="end">
+  </app-validate-tooltip>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+  <app-validate-tooltip [control]="ngForm.get('city')">
+    <input pInputText formControlName="city">
+  </app-validate-tooltip>
+</form>
 
-## Further help
+```
+```
+// app.component.ts
+export class AppComponent implements OnInit{
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  ngForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
+  ngOnInit() {
+    this.ngForm = this.fb.group({
+      start: ['', [Validators.required, Validators.minLength(4)]],
+      end: ['', [Validators.required, Validators.minLength(4)]],
+      city: ['', []],
+      address: ['', [Validators.required, Validators.minLength(4)]],
+    });
+  }
+}
+
+```
+
+### Custom Your Own ValidateMsg
+
+like [this](https://github.com/CK110/ngx-validate-tooltip/blob/master/src/app/custom-validate-msg.service.ts) And You should import in AppModule.
+
+```
+  providers: [
+    //ValidateMsgService
++     { provide: ValidateMsgService, useClass: CustomValidateMsgService }
+  ],
+
+```
+
+
