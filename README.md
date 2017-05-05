@@ -3,7 +3,7 @@ a validate tooltip built with Angular4 inspired by [PrimeNG](https://github.com/
 
 ## Installation
 
-npm i ngx-validate-tooltip --save
+`npm i ngx-validate-tooltip --save`
 
 ## Usage
 
