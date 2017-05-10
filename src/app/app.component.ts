@@ -24,6 +24,8 @@ export class AppComponent implements OnInit{
       end: ['', [Validators.required, Validators.minLength(4)]],
       city: ['', []],
       address: ['', [Validators.required, Validators.minLength(4)]],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
     });
   }
 

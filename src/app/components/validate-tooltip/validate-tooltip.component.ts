@@ -20,18 +20,13 @@ export class ValidateTooltipComponent implements OnDestroy {
 
   container: any;
 
-
   @ViewChild('in')
   in: ElementRef;
-
-  @ViewChild('tip')
-  tip: ElementRef;
 
   @HostListener('mouseenter')
   onMouseEnter() {
     if (this.control.invalid) {
-      this.errorMessage = this.getErrorMsg();
-      this.show();
+      this.showErrMsg();
     }
   }
 
@@ -43,8 +38,7 @@ export class ValidateTooltipComponent implements OnDestroy {
   @HostListener('focusin')
   onFocusIn() {
     if (this.control.invalid) {
-      this.errorMessage = this.getErrorMsg();
-      this.show();
+      this.showErrMsg();
     }
   }
 
@@ -56,8 +50,7 @@ export class ValidateTooltipComponent implements OnDestroy {
   @HostListener('keyup')
   onKeyup() {
     if (this.control.invalid) {
-      this.errorMessage = this.getErrorMsg();
-      this.show();
+      this.showErrMsg();
     }else {
       this.hide();
     }
@@ -65,6 +58,13 @@ export class ValidateTooltipComponent implements OnDestroy {
 
   constructor(private domHandler: DomHandler, private el: ElementRef, private validateMsgService: ValidateMsgService) {
 
+  }
+
+  showErrMsg(): void {
+    this.errorMessage = this.getErrorMsg();
+    if (this.errorMessage !== null && this.errorMessage !== undefined) {
+      this.show();
+    }
   }
 
   getErrorMsg(): string {
@@ -98,8 +98,6 @@ export class ValidateTooltipComponent implements OnDestroy {
       case 'right':
         left = targetLeft + this.domHandler.getOuterWidth(this.in.nativeElement);
         top = targetTop + (this.domHandler.getOuterHeight(this.in.nativeElement) - this.domHandler.getOuterHeight(this.container)) / 2;
-        console.log(left);
-        console.log(top);
         break;
 
       case 'left':
